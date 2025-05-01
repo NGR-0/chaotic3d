@@ -35,11 +35,11 @@ document.body.appendChild(renderer.domElement);
 
 // control camera
 const control = new OrbitControls(camera, renderer.domElement);
-control.enableDamping = true; // Efek damping (inertia) agar lebih halus
+control.enableDamping = true;
 control.dampingFactor = 0.05;
-control.screenSpacePanning = false; // Batasi panning agar tetap di plane
-control.maxPolarAngle = Math.PI / 2 - 0.1; // Batasi rotasi agar tidak bisa melihat dari bawah
-control.minDistance = 1; // Jarak minimum kamera dari target (misalnya 1 unit)
+control.screenSpacePanning = false;
+control.maxPolarAngle = Math.PI / 2 - 0.1;
+control.minDistance = 1;
 control.maxDistance = 1500;
 
 // texture land
@@ -73,14 +73,14 @@ const circleCount = 2500;
 for (let i = 0; i < circleCount; i++) {
   const geometry = new THREE.CircleGeometry(25, 25, 1, 7);
   const material = new THREE.MeshPhysicalMaterial({
-    color: 0xffffff, // Warna dasar putih
-    metalness: 0.7, // Kaca bukan logam
-    roughness: 0, // Licin agar refleksi tajam
-    transmission: 1, // Biar tembus pandang (khusus MeshPhysicalMaterial)
-    thickness: 1, // Ketebalan kaca
-    ior: 1.5, // Index of Refraction (kaca sekitar 1.5)
-    reflectivity: 1, // Maksimalkan refleksi
-    specularIntensity: 1, // Highlight terang
+    color: 0xffffff,
+    metalness: 0.7,
+    roughness: 0,
+    transmission: 1,
+    thickness: 1,
+    ior: 1.5,
+    reflectivity: 1,
+    specularIntensity: 1,
     transparent: true,
     clearcoat: 1,
     clearcoatRoughness: 0,
