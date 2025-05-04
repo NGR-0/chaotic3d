@@ -1,5 +1,6 @@
 ### 1. Clone this repository
 git clone https://github.com/zerollionair/chaotic3d.git
+
 cd chaotic3d
 
 ### 2. Install dependencies
