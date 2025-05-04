@@ -69,13 +69,21 @@ scene.add(planeMesh);
 
 //circle
 const circleMeshes = [];
-const circleCount = 2500;
+const circleCount = 3000;
 for (let i = 0; i < circleCount; i++) {
-  const geometry = new THREE.CircleGeometry(25, 25, 1, 7);
+  const geometry = new THREE.ConeGeometry(
+    21,
+    1,
+    3,
+    1,
+    true,
+    0,
+    6.283185307179586,
+  );
   const material = new THREE.MeshPhysicalMaterial({
     color: 0xffffff,
-    metalness: 0.7,
-    roughness: 0,
+    metalness: 0.2,
+    roughness: 0.2,
     transmission: 1,
     thickness: 1,
     ior: 1.5,
@@ -100,6 +108,9 @@ for (let i = 0; i < circleCount; i++) {
   scene.add(circleMesh);
   circleMeshes.push(circleMesh);
 }
+circleMeshes.forEach((x) => {
+  x.rotation.x = Math.PI / 2;
+});
 function animate() {
   control.update();
 
@@ -112,6 +123,8 @@ function animate() {
     circleMesh.position.x += directionX * Math.sin(time * speed + offset) * 0.9;
     circleMesh.position.y += directionY * Math.cos(time * speed + offset) * 0.9;
     circleMesh.position.z += directionZ * Math.sin(time * speed + offset) * 0.9;
+
+    circleMesh.rotation.y += circleMesh.userData.speed;
   });
 
   renderer.render(scene, camera);
